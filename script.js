@@ -46,31 +46,3 @@ const addTodo = () => {
     }
 }
 
-// Function to update : (Edit/Delete) todo
-const updateTodo = (e) => {
-    if (e.target.innerHTML === "Remove") {
-        todoList.removeChild(e.target.parentElement);
-        deleteLocalTodos(e.target.parentElement);
-    }
-
-    if (e.target.innerHTML === "Edit") {
-        inputBox.value = e.target.previousElementSibling.innerHTML;
-        inputBox.focus();
-        addBtn.value = "Edit";
-        editTodo = e;
-    }
-}
-
-// Function to save local todo
-const saveLocalTodos = (todo) => {
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-        todos = [];
-    }
-    else {
-        todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    todos.push(todo);
-    localStorage.setItem("todos", JSON.stringify(todos));
-}
-
